@@ -127,7 +127,9 @@ export default function Sidebar({
               onClick={() => onSetViewFilter(item.key)}
               className={`p-2 rounded-lg text-sm transition-colors ${
                 viewFilter === item.key
-                  ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400'
+                  ? theme === 'dark'
+                    ? 'bg-primary-900/30 text-primary-400'
+                    : 'bg-primary-100 text-primary-700'
                   : theme === 'dark' ? 'hover:bg-slate-800 text-slate-400' : 'hover:bg-slate-100 text-slate-500'
               }`}
               title={item.label}
@@ -226,7 +228,9 @@ export default function Sidebar({
 
       {/* View Filters */}
       <div className="px-3 py-2">
-        <div className="flex gap-0.5 p-0.5 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+        <div className={`flex gap-0.5 p-0.5 rounded-lg ${
+          theme === 'dark' ? 'bg-slate-800/70' : 'bg-slate-100'
+        }`}>
           {filterItems.map(item => (
             <button
               key={item.key}
@@ -236,8 +240,12 @@ export default function Sidebar({
               }}
               className={`flex-1 flex items-center justify-center gap-1 py-1.5 rounded-md text-xs font-medium transition-all ${
                 viewFilter === item.key && !filterCategoryId
-                  ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-primary-400 shadow-sm'
-                  : theme === 'dark' ? 'text-slate-400 hover:text-slate-300' : 'text-slate-500 hover:text-slate-700'
+                  ? theme === 'dark'
+                    ? 'bg-slate-700 text-primary-400 shadow-sm shadow-slate-900/30'
+                    : 'bg-white text-primary-600 shadow-sm shadow-slate-200/50'
+                  : theme === 'dark'
+                    ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                    : 'text-slate-600 hover:text-slate-800 hover:bg-slate-200/60'
               }`}
             >
               <span className="text-xs">{item.icon}</span>
