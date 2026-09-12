@@ -1,0 +1,13 @@
+node_modules/
+.kilo/
+dist/
+.vite/
+*.log
+.env
+.env.local
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+*.swp
